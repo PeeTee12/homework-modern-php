@@ -23,12 +23,17 @@ class Log {
     return $stats;
   }
 }
-$printLog = function ($stats) {
+$printLog = function (iterable $stats) {
   $logLines = "";
   foreach ($stats as $level => $count) {
-    $logLines .= "$level: $count\n";
+    if ($level) {
+      $logLines .= "$level: $count\n";
+    }
   }
-  return $logLines;
+  if ($logLines)
+    return $logLines;
+  else
+    return 'No messages found.';
 };
 
 // volání
